@@ -1,0 +1,21 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=4282
+
+BreakIndent Beta tries to make wrapped lines look neater and less disruptive, by updating showbreak to indent them to the same column as the currently focused line.
+
+Warning: Because it changes showbreak, it can cause lines to visibly shift up and down when a new indent is applied.  To reduce how often this happens, you can enable breakindent_update_rarely, breakindent_match_gap or breakindent_never_shrink.
+
+BreakIndent Beta is a pure vimscript alternative to the old breakindent patch, which I failed to get working smoothly in modern Vim.  Unlike the breakindent patch, this vimscript *cannot* present a different indent for each line.  Instead it updates the showbreak option to fit the indent of the current cursor line.  Unfortunately this means that showbreak can change often, and other lines on the display may not appear at the ideal indent.
+
+Some commands that may be useful when wrapping long lines:
+
+   :set wrap                  " This script does nothing in nowrap mode
+   :set linebreak nolist      " Break lines cleanly at word gaps, hides tabs
+   :set list                  " Visible tabs, breaks words anywhere
+
+   :set textwidth=0
+   :set wrapmargin=0          " Attempts to disable auto-linefeed when typing
+   :set formatopts-=cq
+
+   :highlight NonText ctermfg=darkblue     " Theme your indent symbols
+   :let g:breakindent_match_gap = 1        " Change breakindent settings
+
